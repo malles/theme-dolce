@@ -24,6 +24,14 @@
 
         })($('#tm-main'));
 
+        // 'tm-headerbar-overlay' scroll event trigger
+        var header = $('.tm-headerbar-overlay');
+
+
+        $(document).on('scrolling.uk.document', function(){
+            header[window.scrollY > 100 ? 'addClass':'removeClass']('tm-navbar-open');
+        });
+
     });
 
 })(jQuery);

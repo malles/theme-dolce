@@ -11,24 +11,33 @@
 
 @comment-avatar-margin-right:                   @global-margin;
 
-@comment-title-margin-top:                      0;
-@comment-title-font-size:                       @global-font-size;
-@comment-title-line-height:                     @global-line-height;
+@comment-title-font-size:                       22px;
+@comment-title-line-height:                     27px;
 
-@comment-meta-margin-top:                       0;
 @comment-meta-color:                            @global-muted-color;
-@comment-meta-font-size:                        round((@global-font-size * 0.78)); // 12px
-@comment-meta-line-height:                      round((@comment-meta-font-size * 1.49)); // 18px
+@comment-meta-font-size:                        @global-ui-font-size;
+@comment-meta-line-height:                      14px;
 
-@comment-list-margin-top:                       @global-margin + 10px;
+@comment-list-margin-top:                       @global-margin;
 
 //
 // New
 //
 
-@comment-primary-padding:                        @global-margin;
-@comment-primary-background:                     @global-default-hover-background;
+@comment-padding:                               @global-padding;
+@comment-border-width:                          @global-border-width;
+@comment-border:                                @global-border;
+@comment-border-radius:                         @global-border-radius;
+@comment-background:                            rgba(0,0,0,0);
 
+@comment-primary-border-width:                  3px;
+@comment-primary-border:                        @global-secondary-background;
+@comment-primary-background:                    rgba(0,0,0,0);
+
+@comment-meta-font-family:                      @global-alt-2-font-family;
+@comment-meta-font-weight:                      @global-alt-2-font-weight;
+@comment-meta-text-transform:                   @global-text-transform;
+@comment-meta-letter-spacing:                   @global-letter-spacing;
 
 
 // Component
@@ -40,43 +49,62 @@
 // Sub-object `uk-comment-header`
 // ========================================================================
 
-.hook-comment-header() {}
+.hook-comment-header() {
+    padding: @comment-padding;
+    border: @comment-border-width solid @comment-border;
+    border-radius: @comment-border-radius;
+    background: @comment-background;
+}
 
 
 // Sub-object `uk-comment-avatar`
 // ========================================================================
 
-.hook-comment-avatar() { border-radius: 500px; }
+.hook-comment-avatar() {}
 
 
 // Sub-object `uk-comment-title`
 // ========================================================================
 
-.hook-comment-title() { font-weight: 400; }
+.hook-comment-title() {}
 
 
 // Sub-object `uk-comment-meta`
 // ========================================================================
 
-.hook-comment-meta() {}
+.hook-comment-meta() {
+    font-family: @comment-meta-font-family;
+    font-weight: @comment-meta-font-weight;
+    text-transform: @comment-meta-text-transform;
+    letter-spacing: @comment-meta-letter-spacing;
+}
 
 
 // Sub-object `uk-comment-body`
 // ========================================================================
 
-.hook-comment-body() {}
+.hook-comment-body() {
+    padding-left: @comment-padding;
+    padding-right: @comment-padding;
+}
 
 
 // Sub-object `uk-comment-primary`
 // ========================================================================
 
-.hook-comment-primary() {
-    padding: @comment-primary-padding;
-    background: @comment-primary-background;
-}
+.hook-comment-primary() {}
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-comment-misc() {}
+.hook-comment-misc() {
+
+    // Comment by administrator
+    .uk-comment-primary .uk-comment-header {
+        border-width: @comment-primary-border-width;
+        border-color: @comment-primary-border;
+        background: @comment-primary-background;
+    }
+
+}

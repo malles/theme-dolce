@@ -7,11 +7,13 @@
 // Variables
 // ========================================================================
 
-@overlay-panel-color:                           @global-contrast-color;
+@overlay-panel-padding:                         @global-padding;
+@overlay-panel-background:                      fade(@global-secondary-active-background, 90%);
+@overlay-panel-color:                           @global-secondary-highlight-color;
 
-@overlay-icon:                                  "";
-@overlay-icon-size:                             34px;
-@overlay-icon-color:                            @global-contrast-color;
+@overlay-icon:                                  "\e114";
+@overlay-icon-size:                             24px;
+@overlay-icon-color:                            @global-secondary-highlight-color;
 
 
 // Sub-object `uk-overlay-panel`
@@ -26,23 +28,18 @@
 .hook-overlay-background() {}
 
 
-// Sub-object `uk-overlay-image`
-// ========================================================================
-
-.hook-overlay-image() {}
-
-
 // Sub-object `uk-overlay-icon`
 // ========================================================================
 
-.hook-overlay-icon() {
-    height: 34px;
-    width: 34px;
-    background: url("@{global-image-path}/overlay-plus.svg") 0 0 no-repeat;
-}
+.hook-overlay-icon() { font-family: @global-theme-icon-font-family; }
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-overlay-misc() {}
+.hook-overlay-misc() {
+
+    // Color for headlines
+    .uk-panel:not(.uk-panel-box)  .uk-overlay-panel > div > .uk-panel-title { color: @overlay-panel-color; }
+
+}

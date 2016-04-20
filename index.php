@@ -20,12 +20,23 @@ return [
     'positions' => [
 
         'navbar' => 'Navbar',
+        'header_social' => 'Header Social',
+        'header_info' => 'Header Info',
         'hero' => 'Hero',
-        'top' => 'Top',
+        'top' => 'Top A',
+        'top_b' => 'Top B',
+        'top_c' => 'Top C',
+        'top_d' => 'Top D',
         'sidebar' => 'Sidebar',
-        'bottom' => 'Bottom',
-        'footer' => 'Footer',
-        'offcanvas' => 'Offcanvas'
+        'bottom' => 'Bottom A',
+        'bottom_b' => 'Bottom B',
+        'bottom_c' => 'Bottom C',
+        'bottom_d' => 'Bottom C',
+        'footer' => 'Footer Main',
+        'footer_left' => 'Footer Left',
+        'footer_right' => 'Footer Right',
+        'offcanvas' => 'Offcanvas',
+        'fixedbar' => 'Fixed Bar'
 
     ],
 
@@ -43,10 +54,21 @@ return [
         'hero_viewport' => '',
         'hero_contrast' => '',
         'hero_parallax' => '',
-        'navbar_transparent' => '',
+        'header_layout' => 'overlay',
+        'header_sticky' => false,
+        'dropdown_overlay' => true,
+        'frame' => 'overlay',
+        'frame_block' => false,
         'top_style' => 'uk-block-muted',
+        'top_b_style' => 'uk-block-default',
+        'top_c_style' => 'uk-block-muted',
+        'top_d_style' => 'uk-block-default',
         'main_style' => 'uk-block-default',
-        'bottom_style' => 'uk-block-muted'
+        'bottom_style' => 'uk-block-muted',
+        'bottom_b_style' => 'uk-block-default',
+        'bottom_c_style' => 'uk-block-primary uk-contrast-primary',
+        'bottom_d_style' => 'uk-block-secondary uk-contrast',
+        'footer_style' => 'uk-block-secondary uk-contrast'
 
     ],
 

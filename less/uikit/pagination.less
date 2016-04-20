@@ -7,21 +7,45 @@
 // Variables
 // ========================================================================
 
+@pagination-font-size:                          @global-ui-font-size;
+@pagination-margin-left:                        5px;
 @pagination-padding-vertical:                   5px;
-@pagination-padding-horizontal:                 5px;
-@pagination-line-height:                        @global-line-height;
-@pagination-background:                         transparent;
-@pagination-color:                              @global-muted-color;
-@pagination-hover-background:                   transparent;
-@pagination-hover-color:                        @global-dark-color;
-@pagination-onclick-background:                 transparent;
-@pagination-onclick-color:                      @global-dark-color;
+@pagination-padding-horizontal:                 @pagination-padding-vertical;
+@pagination-line-height:                        30px;
 
-@pagination-active-background:                  transparent;
-@pagination-active-color:                       @global-dark-color;
+@pagination-background:                         rgba(0,0,0,0);
+@pagination-color:                              @global-color;
 
-@pagination-disabled-background:                transparent;
+@pagination-hover-background:                   rgba(0,0,0,0);
+@pagination-hover-color:                        @global-muted-color;
+
+@pagination-onclick-background:                 rgba(0,0,0,0);
+@pagination-onclick-color:                      @global-color;
+
+@pagination-active-background:                  rgba(0,0,0,0);
+@pagination-active-color:                       @global-highlight-color;
+
+@pagination-disabled-background:                rgba(0,0,0,0);
 @pagination-disabled-color:                     @global-muted-color;
+
+//
+// New
+//
+
+@pagination-border-radius:                      ((@pagination-line-height + (@pagination-padding-vertical * 2)) / 2);
+@pagination-border-width:                       @global-border-width;
+
+@pagination-font-family:                        @global-alt-2-font-family;
+@pagination-font-weight:                        @global-alt-2-font-weight;
+@pagination-text-transform:                     @global-alt-2-text-transform;
+@pagination-letter-spacing:                     @global-alt-2-letter-spacing;
+
+@pagination-active-border-width:                15px;
+@pagination-active-border-offset:               round((@pagination-active-border-width / 2));
+@pagination-active-border-height:               2px;
+@pagination-active-border:                      @pagination-active-color;
+
+@pagination-active-filter:                      @global-active-filter;
 
 
 // Component
@@ -31,17 +55,44 @@
 // Items
 //
 
-.hook-pagination-item() {}
+.hook-pagination-item() {
+    font-family: @pagination-font-family;
+    font-weight: @pagination-font-weight;
+    border-radius: @pagination-border-radius;
+    text-transform: @pagination-text-transform;
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
+}
 
 // Link
+
 .hook-pagination-link() {}
 
 .hook-pagination-link-hover() {}
 
-.hook-pagination-link-active() {}
+.hook-pagination-link-active() {
+    -webkit-filter: @pagination-active-filter;
+    filter: @pagination-active-filter;
+}
 
 // Active
-.hook-pagination-active() {}
+
+.hook-pagination-active() {
+
+    position: relative;
+
+    // Border
+    &::after {
+        position: absolute;
+        left: ~'calc(50% - @{pagination-active-border-offset})';
+        bottom: 0;
+        width: @pagination-active-border-width;
+        height: @pagination-active-border-height;
+        content: '';
+        background: @pagination-active-border;
+    }
+
+}
 
 // Disabled
 .hook-pagination-disabled() {}
@@ -52,7 +103,11 @@
 
 .hook-pagination-misc() {
 
-    .uk-pagination-previous > *,
-    .uk-pagination-next > * { padding: @pagination-padding-vertical 0 !important; }
+    // Next + previous items
+    .uk-pagination-next > *,
+    .uk-pagination-previous > * {
+        padding: @pagination-padding-vertical @pagination-border-radius !important;
+        letter-spacing: @pagination-letter-spacing;
+    }
 
 }

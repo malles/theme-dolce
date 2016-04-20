@@ -3,6 +3,40 @@
 @icon-font-path: "../../../../app/assets/uikit/fonts";
 @global-image-path: '../less/uikit/images';
 
+
+
+@theme-frame-placeholder-background:                            @global-light-background;
+@theme-frame-background:                                        @theme-headerbar-background;
+@theme-frame-size:                                              @global-grid-gutter;
+@theme-frame-size-large:                                        @global-grid-gutter-large;
+@theme-frame-size-xlarge:                                       @global-grid-gutter-large;
+
+@theme-headerbar-background:                                    @global-background;
+@theme-headerbar-max-width:                                     400px;
+
+@theme-headerbar-icon-search:                                   "\e036";
+@theme-headerbar-icon-more:                                     "\e114";
+@theme-headerbar-icon-size:                                     16px;
+@theme-headerbar-icon-size-large:                               20px;
+@theme-headerbar-icon-color:                                    @global-highlight-color;
+@theme-headerbar-icon-hover-color:                              fade(@theme-headerbar-icon-color, 70%);
+@theme-headerbar-icon-click-color:                              @global-primary-color;
+@theme-headerbar-button-width:                                  35px;
+@theme-headerbar-button-height:                                 35px;
+@theme-headerbar-dropdown-background:                           @theme-headerbar-background;
+@theme-headerbar-dropdown-width:                                200px;
+
+@theme-navbar-background:                                       @theme-headerbar-background;
+@theme-navbar-dropdown-overlay-background:                      @theme-headerbar-background;
+
+@theme-footer-height:                                           150px;
+@theme-footer-totop-size:                                       40px;
+@theme-footer-totop-color:                                      @global-muted-color;
+@theme-footer-totop-hover-color:                                @global-highlight-color;
+@theme-footer-totop-active-color:                               @global-highlight-color;
+
+@theme-fixed-bar-width:                                         60px;
+
 /* ========================================================================
    Theme
  ========================================================================== */
@@ -15,77 +49,7 @@
 
 html { overflow-y: scroll; }
 
-
-/* Navbar
- ========================================================================== */
-
-.tm-navbar {
-    position: relative;
-    background: @navbar-background;
-    box-shadow: 0px 3px 8px -4px rgba(0,0,0,0.15);
-    z-index: 1;
-}
-
-/* Navbar as overlay */
-.tm-navbar-overlay:not(.uk-active) {
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-}
-
-/* Transparent background */
-.tm-navbar-transparent {
-    border-bottom-color: transparent;
-    background: transparent;
-    box-shadow: none;
-}
-
-.tm-navbar-transparent .uk-navbar { background: none; }
-
-/*
- * Contrast color
- */
-
-.tm-logo-contrast { display: none; }
-
-.tm-navbar-contrast {
-
-    .uk-navbar { color: @contrast-color; }
-
-    // Nav
-    .uk-navbar-nav > li > a { color: fade(@contrast-color, 70%); }
-
-    .uk-navbar-nav > li:hover > a,
-    .uk-navbar-nav > li > a:focus,
-    .uk-navbar-nav > li.uk-open > a { color: @contrast-color; }
-
-    .uk-navbar-nav > li > a:active { color: @contrast-color; }
-
-    .uk-navbar-nav > li.uk-active > a { color: @contrast-color; }
-
-    // Link
-    .uk-navbar-content > a:not([class]) { color: fade(@contrast-color, 70%); }
-    .uk-navbar-content > a:not([class]):hover { color: @contrast-color; }
-
-    // Brand
-    .uk-navbar-brand { color: fade(@contrast-color, 70%); }
-
-    .uk-navbar-brand:hover,
-    .uk-navbar-brand:focus { color: @contrast-color; }
-
-    // Toggle
-    .uk-navbar-toggle { color: fade(@contrast-color, 70%); }
-
-    .uk-navbar-toggle:hover,
-    .uk-navbar-toggle:focus { color: @contrast-color; }
-
-    .uk-navbar-toggle:after { background: url("../less/uikit/images/navbar-toggle-contrast.svg") 0 0 no-repeat; }
-
-    // Logo
-    .tm-logo { display: none; }
-    .tm-logo-contrast { display: inline-block; }
-
-}
+body { background: red; }
 
 
 /* Blocks
@@ -117,3 +81,427 @@ html { overflow-y: scroll; }
     max-width: 800px;
     margin: auto;
 }
+
+
+
+
+//
+// Frame (Warp Option)
+//
+
+// Animation keyframes
+@-webkit-keyframes tm-frame-top {
+    0% { -webkit-transform: translateY(-80px); }
+    100% { -webkit-transform: translateY(0px); }
+}
+
+@keyframes tm-frame-top {
+    0% { transform: translateY(-80px); }
+    100% { transform: translateY(0px); }
+}
+
+@-webkit-keyframes tm-frame-bottom {
+    0% { -webkit-transform: translateY(80px); }
+    100% { -webkit-transform: translateY(0px); }
+}
+
+@keyframes tm-frame-bottom {
+    0% { transform: translateY(80px); }
+    100% { transform: translateY(0px); }
+}
+
+@-webkit-keyframes tm-frame-right {
+    0% { -webkit-transform: translateX(80px); }
+    100% { -webkit-transform: translateY(0px); }
+}
+
+@keyframes tm-frame-right {
+    0% { transform: translateX(80px); }
+    100% { transform: translateY(0px); }
+}
+
+@-webkit-keyframes tm-frame-left {
+    0% { -webkit-transform: translateX(-80px); }
+    100% { -webkit-transform: translateY(0px); }
+}
+
+@keyframes tm-frame-left {
+    0% { transform: translateX(-80px); }
+    100% { transform: translateY(0px); }
+}
+
+// Medium screens frame size
+@media (min-width: @breakpoint-medium) {
+
+    // With Padding
+    .tm-page-padding .tm-page-frame { padding: 0 @theme-frame-size; }
+
+    .tm-page-frame {
+        box-sizing: border-box;
+        background: @theme-frame-placeholder-background;
+        -webkit-transition: padding 0.2s ease-in-out;
+        transition: padding 0.2s ease-in-out;
+    }
+
+    // Adding more space to the block container
+    .tm-page-overlay .tm-page-frame .uk-block:not(.tm-grid-collapse) > .uk-container { padding: 0 round((@theme-frame-size + @utility-container-padding-horizontal)); }
+
+    [class*='tm-frame-'] {
+        position: fixed;
+        z-index: @global-z-index;
+        background: @theme-frame-background;
+        -webkit-animation-duration: 0.5s;
+        animation-duration: 0.5s;
+        -webkit-animation-delay: 0s;
+        animation-delay: 0s;
+        -webkit-animation-timing-function: ease-out;
+        animation-timing-function: ease-out;
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+
+    .tm-frame-top,
+    .tm-frame-bottom {
+        width: 100%;
+        height: @theme-frame-size;
+    }
+
+    .tm-frame-right,
+    .tm-frame-left {
+        width: @theme-frame-size;
+        height: 100%;
+    }
+
+    .tm-frame-top {
+        top: 0;
+        left: 0;
+        -webkit-animation-name: tm-frame-top;
+        animation-name: tm-frame-top;
+    }
+
+    .tm-frame-bottom {
+        bottom: 0;
+        right: 0;
+        -webkit-animation-name: tm-frame-bottom;
+        animation-name: tm-frame-bottom;
+    }
+
+    .tm-frame-right {
+        top: 0;
+        right: 0;
+        -webkit-animation-name: tm-frame-right;
+        animation-name: tm-frame-right;
+    }
+
+    .tm-frame-left {
+        top: 0;
+        left: 0;
+        -webkit-animation-name: tm-frame-left;
+        animation-name: tm-frame-left;
+    }
+
+}
+
+// Large screens frame size
+@media (min-width: @breakpoint-large) {
+
+    // Adding padding on medium screens
+    .tm-page-frame { padding: @theme-frame-size-large; }
+
+    // Adding more space to the block container
+    .tm-page-overlay .tm-page-frame .uk-block:not(.tm-grid-collapse) > .uk-container { padding: 0 round((@theme-frame-size-large + @utility-container-large-padding-horizontal)); }
+
+    .tm-frame-top,
+    .tm-frame-bottom { height: @theme-frame-size-large; }
+
+    .tm-frame-right,
+    .tm-frame-left { width: @theme-frame-size-large; }
+
+    // Frame style for 'uk-block' component
+    .tm-block-frame .uk-block + .uk-block { border-top: @theme-frame-size-large solid @theme-frame-background; }
+
+}
+
+// Extra Large screens frame size
+@media (min-width: @breakpoint-xlarge) {
+
+    // Frame padding
+    .tm-page-padding .tm-page-frame { padding: @theme-frame-size-xlarge; }
+    .tm-page-overlay .tm-page-frame { padding: 0; }
+
+    // Adding more space to the block container
+    .tm-page-overlay .tm-page-frame .uk-block:not(.tm-grid-collapse) > .uk-container { padding: 0 round((@theme-frame-size-xlarge + @utility-container-large-padding-horizontal)); }
+
+    .tm-frame-top,
+    .tm-frame-bottom { height: @theme-frame-size-xlarge; }
+
+    .tm-frame-right,
+    .tm-frame-left { width: @theme-frame-size-xlarge; }
+
+    // Frame style for 'uk-block' component
+    .tm-block-frame .uk-block + .uk-block { border-top-width: @theme-frame-size-xlarge; }
+
+}
+
+
+//
+// Headerbar
+//
+
+// Sticky enabled
+.uk-sticky-placeholder,
+.uk-sticky-init.uk-active { z-index: (@global-z-index + 1); }
+
+// Removing the padding when page frame is active
+.tm-sticky .tm-page-frame { padding-top: 0; }
+
+// 'tm-logo' reseting 'uk-navbar-brand' properties
+.tm-logo {
+
+    height: auto;
+    float: none;
+
+    // Setting a responsive height for image
+    img { &:extend(.uk-responsive-height all); }
+
+}
+
+.tm-headerbar:not(.tm-headerbar-overlay) {
+    position: relative;
+    z-index: (@global-z-index + 1);
+    background: @theme-headerbar-background;
+}
+
+// Headerbar left + right
+.tm-headerbar-left,
+.tm-headerbar-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    max-width: @theme-headerbar-max-width;
+}
+
+.tm-headerbar-left { left: @global-grid-gutter; }
+.tm-headerbar-right { right: @global-grid-gutter; }
+
+// Increasing the gutter when theme frame is enabled
+.tm-framed .tm-headerbar-left { left: @theme-frame-size-large; }
+.tm-framed .tm-headerbar-right { right: @theme-frame-size-large; }
+
+// uk-panel in headerbar position
+.tm-headerbar-left .uk-panel,
+.tm-headerbar-right .uk-panel {
+    padding: @global-padding 0;
+    line-height: 1.2;
+}
+
+// Navbar search + more
+.tm-headerbar .tm-search,
+.tm-headerbar .tm-more {
+
+    position: relative;
+
+    // Search button
+    .tm-headerbar-button {
+
+        width: @theme-headerbar-button-width;
+        height: @theme-headerbar-button-height;
+        line-height: 1;
+        background: none;
+        border: none;
+        outline: 0;
+        cursor: pointer;
+
+        // Setting the icon
+        &::before {
+            font-family: @global-theme-icon-font-family;
+            font-size: @theme-headerbar-icon-size;
+            color: @theme-headerbar-icon-color;
+            -webkit-transition: @global-transition;
+            transition: @global-transition;
+        }
+
+        // Hover
+        &:hover::before { color: @theme-headerbar-icon-hover-color; }
+
+        // Onclick
+        &:focus::before,
+        &:active::before { color: @theme-headerbar-icon-click-color; }
+
+    }
+
+    // Icons
+    .tm-search-button::before { content: @theme-headerbar-icon-search; }
+    .tm-more-button::before { content: @theme-headerbar-icon-more; }
+
+    // Dropdown style
+    .tm-headerbar-dropdown {
+        width: @theme-headerbar-dropdown-width;
+        margin-left: 0;
+        background-color: @theme-headerbar-dropdown-background;
+    }
+
+}
+
+// Hiding the default icon
+.tm-headerbar .tm-search .uk-search::before { display: none; }
+
+// Search field width
+.tm-headerbar .tm-search .tm-search-dropdown .uk-search-field,
+.tm-headerbar .tm-search .tm-search-dropdown .uk-search-field:focus { width: @theme-headerbar-dropdown-width; }
+
+//
+// Headerbar Default
+// Theme source: yoo_dolce-vita/layouts/header.default.php
+//
+
+.tm-headerbar-default { padding: @global-padding 0; }
+.tm-headerbar-default .tm-search .tm-headerbar-button::before,
+.tm-headerbar-default .tm-more .tm-headerbar-button::before { font-size: @theme-headerbar-icon-size-large; }
+
+//
+// Headerbar Center
+// Theme source: yoo_dolce-vita/layouts/header.centered.php
+//
+.tm-headerbar-center { padding: @global-padding @global-padding-large; }
+
+//
+// Headerbar Single Row
+// Theme source: yoo_dolce-vita/layouts/header.single.php
+//
+
+.tm-headerbar-single { padding: @global-padding-large 0; box-sizing: border-box; }
+
+// Putting the logo above the 'tm-dropdown-overlay'
+.tm-headerbar-single .tm-headerbar-left { z-index: (@global-z-index + 11); }
+
+// Setting the logo height to 100%
+.tm-headerbar-single .tm-logo {
+    height: 100%;
+    padding: 0 @global-padding;
+}
+
+.tm-headerbar-single .tm-dropdown-overlay {
+    top: @navbar-nav-height;
+    left: 0;
+}
+
+//
+// Headerbar Overlay on Hover/Scroll
+// Theme source: yoo_dolce-vita/layouts/header.overlay.php
+//
+
+.tm-headerbar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: (@global-z-index + 2);
+    -webkit-transition: @global-transition;
+    transition: @global-transition;
+}
+
+// Large screens only
+@media (min-width: @breakpoint-medium) {
+
+    .tm-headerbar-overlay {
+
+        // Logo Container
+        .tm-logo-wrapper {
+
+            width: 100%;
+            text-align: center;
+
+            // Logo
+            .tm-logo {
+                padding: @global-padding-small round(@global-padding-small * 2);
+                background: @theme-headerbar-background;
+            }
+
+        }
+
+        // Background Animation
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            background: @theme-navbar-dropdown-overlay-background;
+            display: none;
+        }
+
+        // Hide Navbar
+        .tm-navbar { display: none; }
+
+        // Display Navbar + Background
+        &:hover,
+        &.tm-navbar-open {
+
+            // Background Animation
+            &::after {
+                display: block;
+                -webkit-animation: uk-slide-bottom-fixed 0.4s ease-in-out;
+                animation: uk-slide-bottom-fixed 0.4s ease-in-out;
+            }
+
+            // Show Navbar
+            .tm-navbar {
+                display: block;
+                width: 100%;
+                background: rgba(0,0,0,0);
+                -webkit-animation: uk-fade-top 0.2s ease-in-out;
+                animation: uk-fade-top 0.2s ease-in-out;
+            }
+
+        }
+
+    }
+
+}
+
+// Small Logo in tm-header-overlay
+.tm-headerbar-overlay .tm-logo-small {
+    width: 100%;
+    height: auto;
+    padding: @global-padding-small round(@global-padding-small * 2);
+    background: @theme-headerbar-background;
+    text-align: center;
+    float: none;
+}
+
+//
+// Navbar
+//
+
+// Setting the navbar background
+.tm-navbar { background: @theme-navbar-background; }
+
+// Navbar Centered
+.tm-navbar-centered { padding-bottom: @global-padding; }
+
+// Navbar Default
+.tm-navbar-default { padding-top: @global-padding-small; }
+.tm-navbar-default .uk-navbar-nav { margin-left: -(@navbar-margin-horizontal); }
+.tm-navbar-default .uk-nav-navbar > li > a { text-align: left; }
+
+
+// Overlay container
+.tm-dropdown-overlay {
+    position: absolute;
+    z-index: (@global-z-index + 10);
+    width: 100%;
+    background: @theme-navbar-dropdown-overlay-background;
+}
+
+// Dropdown modifications for tm-dropdown-overlay
+.tm-navbar-overlay-true .uk-dropdown-navbar {
+    padding-top: 0;
+    background: rgba(0,0,0,0);
+}
+
+.tm-navbar-default.tm-navbar-overlay-true .uk-dropdown-navbar  { padding-left: 0; }
