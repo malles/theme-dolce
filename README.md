@@ -1,3 +1,3 @@
-# One Theme
+# Dolce Theme
 
-Pagekit's default theme.
+A very clean and simple theme great for blogging.

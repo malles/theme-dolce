@@ -1,9 +1,9 @@
 {
-    "name": "pagekit/theme-one",
+    "name": "pagekit/theme-dolce",
     "type": "pagekit-theme",
     "version": "1.0.0",
-    "title": "One",
-    "description": "Pagekit's default theme.",
+    "title": "Dolce",
+    "description": "A very clean and simple theme great for blogging.",
     "license": "MIT",
     "authors": [
         {
