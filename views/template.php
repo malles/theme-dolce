@@ -9,18 +9,7 @@
         <?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky',  'uikit-lightbox',  'uikit-parallax']) ?>
     </head>
 
-    <?php
-
-        $body_classes = array();
-        if ($params['frame'] == 'overlay') $body_classes[] = 'tm-framed tm-page-overlay';
-        if ($params['frame'] == 'padding') $body_classes[] = 'tm-framed tm-page-padding';
-        if ($params['frame_block']) $body_classes[] = 'tm-block-frame';
-
-        $body_classes = count($body_classes) ? sprintf('class="%s"', trim(implode(' ', $body_classes))) : '';
-
-    ?>
-
-    <body <?= $body_classes; ?>>
+    <body <?= $params['classes.body'] ?>>
 
         <?php if ($params['frame']) : ?>
         <div class="tm-frame-top"></div>
@@ -154,7 +143,7 @@
                 <div class="uk-container uk-container-center">
 
                     <?php if ($view->position()->exists('footer')) : ?>
-                    <section class="uk-grid uk-grid-match" data-uk-grid-margin>
+                    <section class="tm-footer uk-grid uk-grid-match" data-uk-grid-margin>
                         <?= $view->position('footer', 'position-grid.php') ?>
                     </section>
                     <?php endif ?>
@@ -164,7 +153,7 @@
 
                         <?php if ($view->position()->exists('footer_left')) : ?>
                         <div class="tm-footer-left uk-flex uk-flex-middle">
-                            <?= $view->position('footer_right', 'position-panel.php') ?>
+                            <?= $view->position('footer_left', 'position-panel.php') ?>
                         </div>
                         <?php endif ?>
 

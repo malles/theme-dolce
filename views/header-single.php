@@ -1,5 +1,6 @@
 <nav class="tm-headerbar tm-headerbar-single"<?= $params['header_sticky'] ? ' data-uk-sticky' : '' ?>>
 
+    <?php if ($params['logo'] || $params['title']) : ?>
     <div class="tm-headerbar-left uk-flex uk-flex-middle">
         <a class="tm-logo uk-navbar-brand uk-hidden-small uk-flex uk-flex-middle" href="<?= $view->url()->get() ?>">
             <?php if ($params['logo']) : ?>
@@ -10,6 +11,7 @@
             <?php endif ?>
         </a>
     </div>
+    <?php endif ?>
 
     <?php if ($view->menu()->exists('main') || $view->position()->exists('navbar')) : ?>
     <div class="uk-flex uk-flex-center uk-height-1-1 uk-position-relative<?php if ($params['dropdown_overlay']) echo ' tm-navbar-overlay-true'; ?> uk-visible-large"<?php if ($params['dropdown_overlay']) echo ' data-uk-dropdown-overlay="{cls: \'tm-dropdown-overlay\'}"'; ?>>
@@ -18,6 +20,7 @@
     </div>
     <?php endif ?>
 
+    <?php if ($view->position()->exists('header-social')  || $view->position()->exists('offcanvas') || $view->menu()->exists('offcanvas')) : ?>
     <div class="tm-headerbar-right uk-flex uk-flex-middle">
 
         <?php if ($view->position()->exists('header_social')) : ?>
@@ -38,5 +41,6 @@
         <?php endif ?>
 
     </div>
+    <?php endif ?>
 
 </nav>

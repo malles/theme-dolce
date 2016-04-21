@@ -1,5 +1,6 @@
 <div class="tm-headerbar tm-headerbar-overlay">
 
+    <?php if ($params['logo'] || $params['title']) : ?>
     <div class="tm-logo-wrapper uk-hidden-small">
         <div class="uk-flex uk-flex-center uk-flex-middle uk-height-1-1 uk-width-1-1">
 
@@ -14,6 +15,7 @@
 
         </div>
     </div>
+    <?php endif ?>
 
     <?php if ($view->menu()->exists('main') || $view->position()->exists('navbar')) : ?>
     <div class="tm-navbar tm-navbar-centered<?php if ($params['dropdown_overlay']) echo ' tm-navbar-overlay-true'; ?> uk-hidden-small">

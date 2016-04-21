@@ -3,6 +3,7 @@
     <div class="uk-container uk-container-center uk-position-relative">
         <div class="uk-flex uk-flex-middle uk-flex-space-between">
 
+            <?php if ($params['logo'] || $params['title']) : ?>
             <div class="uk-flex uk-flex-center">
                 <a class="tm-logo uk-height-1-1 uk-navbar-brand uk-hidden-small" href="<?= $view->url()->get() ?>">
                     <?php if ($params['logo']) : ?>
@@ -13,7 +14,9 @@
                     <?php endif ?>
                 </a>
             </div>
+            <?php endif ?>
 
+            <?php if ($view->position()->exists('header-social')  || $view->position()->exists('offcanvas') || $view->menu()->exists('offcanvas')) : ?>
             <div class="tm-headerbar-right uk-flex uk-flex-middle">
 
                 <?php if ($view->position()->exists('header_social')) : ?>
@@ -34,6 +37,7 @@
                 <?php endif ?>
 
             </div>
+            <?php endif ?>
 
         </div>
     </div>

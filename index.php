@@ -137,37 +137,8 @@ return [
                 'parallax' => ''
             ];
 
-            $sticky = [
-                'media' => 767,
-                'showup' => true,
-                'animation' => 'uk-animation-slide-top'
-            ];
-
             if ($params['hero_viewport']) {
                 $classes['hero'] = 'tm-hero-height';
-            }
-
-            // Sticky overlay navbar if hero position exists
-            if ($params['navbar_transparent'] && $view->position()->exists('hero') && $params['hero_image']) {
-
-                $sticky['top'] = '.uk-sticky-placeholder + *';
-                $classes['navbar'] .= ' tm-navbar-overlay tm-navbar-transparent';
-
-                if ($params['hero_viewport']) {
-                    $classes['hero'] = 'uk-height-viewport';
-                } else {
-                    $classes['hero'] = 'tm-hero-padding';
-                }
-
-                if ($params['hero_contrast']) {
-
-                    $sticky['clsinactive'] = 'tm-navbar-transparent tm-navbar-contrast';
-                    $classes['navbar'] .= ' tm-navbar-contrast';
-
-                } else {
-                    $sticky['clsinactive'] = 'tm-navbar-transparent';
-                }
-
             }
 
             if ($params['hero_parallax'] && $view->position()->exists('hero') && $params['hero_image']) {
@@ -178,9 +149,23 @@ return [
                 $classes['hero'] .= ' uk-contrast';
             }
 
-            $classes['sticky'] = 'data-uk-sticky=\''.json_encode($sticky).'\'';
+            // body classes
+            if ($params['frame'] == 'overlay') {
+                $classes['body'][] = 'tm-framed tm-page-overlay';
+            }
+            if ($params['frame'] == 'padding') {
+                $classes['body'][] = 'tm-framed tm-page-padding';
+            }
+            if ($params['frame_block']) {
+                $classes['body'][] = 'tm-block-frame';
+            }
+
+            if (key_exists('body', $classes)) {
+                $classes['body'] = sprintf('class="%s"', trim(implode(' ', $classes['body'])));
+            }
 
             $params['classes'] = $classes;
+
         },
 
         'view.system/site/widget-menu' => function ($event, $view) {
