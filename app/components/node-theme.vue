@@ -63,10 +63,10 @@
                     <option value="default">{{ 'Left' | trans }}</option>
                     <option value="centered">{{ 'Centered' | trans }}</option>
                     <option value="single">{{ 'Single' | trans }}</option>
-                    <option value="overlay">{{ 'Overlay' | trans }}</option>
+                    <option value="overlay">{{ 'Overlay (always sticky)' | trans }}</option>
                 </select>
                 <p class="uk-form-controls-condensed">
-                    <label><input type="checkbox" v-model="node.theme.header_sticky"> {{ 'Fixed Navigation' | trans }}</label>
+                    <label><input type="checkbox" v-model="node.theme.header_sticky"> {{ 'Sticky Navigation' | trans }}</label>
                 </p>
             </div>
         </div>
