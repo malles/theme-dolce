@@ -10,7 +10,8 @@ return [
     'menus' => [
 
         'main' => 'Main',
-        'offcanvas' => 'Offcanvas'
+        'offcanvas' => 'Offcanvas',
+        'footer' => 'Footer'
 
     ],
 

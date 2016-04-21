@@ -163,11 +163,15 @@
                         </div>
                         <?php endif ?>
 
-                        <?php if ($view->position()->exists('footer_right')) : ?>
+                        <?php if ($view->position()->exists('footer_right') || $view->menu()->exists('footer')) : ?>
                         <div class="tm-footer-right uk-flex uk-flex-middle">
                             <?= $view->position('footer_right', 'position-panel.php') ?>
+                            <?php if ($view->menu()->exists('footer')) : ?>
+                                <?= $view->menu('footer', 'menu-footer.php') ?>
+                            <?php endif ?>
                         </div>
                         <?php endif ?>
+
 
                     </footer>
                     <?php endif ?>
