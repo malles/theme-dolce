@@ -83,8 +83,8 @@
             <div class="uk-form-controls">
                 <select id="form-frame" class="uk-form-width-large" v-model="node.theme.frame">
                     <option value="">{{ 'None' | trans }}</option>
-                    <option value="tm-page-overlay">{{ 'Overlay' | trans }}</option>
-                    <option value="tm-page-padding">{{ 'Padding' | trans }}</option>
+                    <option value="overlay">{{ 'Overlay' | trans }}</option>
+                    <option value="padding">{{ 'Padding' | trans }}</option>
                 </select>
                 <p class="uk-form-controls-condensed">
                     <label><input type="checkbox" v-model="node.theme.frame_block"> {{ 'Add a spacing between every block matching the frame size' | trans }}</label>
@@ -93,7 +93,14 @@
         </div>
 
         <div class="uk-form-row">
-            <label for="form-top-style" class="uk-form-label">Top {{ 'Position' | trans }}</label>
+            <span class="uk-form-label">{{ 'To-top Scroller' | trans }}</span>
+            <div class="uk-form-controls uk-form-controls-text">
+                <label><input type="checkbox" v-model="node.theme.totop_scroller"> {{ 'Enable a to-top scroller.' | trans }}</label>
+            </div>
+        </div>
+
+        <div class="uk-form-row">
+            <label for="form-top-style" class="uk-form-label">Top A {{ 'Position' | trans }}</label>
             <div class="uk-form-controls">
                 <select id="form-top-style" class="uk-form-width-large" v-model="node.theme.top_style">
                     <option value="uk-block-default">{{ 'Default' | trans }}</option>
@@ -153,7 +160,7 @@
         </div>
 
         <div class="uk-form-row">
-            <label for="form-bottom-style" class="uk-form-label">Bottom {{ 'Position' | trans }}</label>
+            <label for="form-bottom-style" class="uk-form-label">Bottom A {{ 'Position' | trans }}</label>
             <div class="uk-form-controls">
                 <select id="form-bottom-style" class="uk-form-width-large" v-model="node.theme.bottom_style">
                     <option value="uk-block-default">{{ 'Default' | trans }}</option>

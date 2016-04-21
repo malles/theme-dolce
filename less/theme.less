@@ -1,9 +1,15 @@
 @import "uikit/uikit.less";
 
+// Fontawesome
 @icon-font-path: "../../../../app/assets/uikit/fonts";
-@global-image-path: '../less/uikit/images';
 
 
+// Theme variables
+// ========================================================================
+
+//
+// Layout
+//
 
 @theme-frame-placeholder-background:                            @global-light-background;
 @theme-frame-background:                                        @theme-headerbar-background;
@@ -14,8 +20,7 @@
 @theme-headerbar-background:                                    @global-background;
 @theme-headerbar-max-width:                                     400px;
 
-@theme-headerbar-icon-search:                                   "\e036";
-@theme-headerbar-icon-more:                                     "\e114";
+@theme-headerbar-icon:                                          "\e114";
 @theme-headerbar-icon-size:                                     16px;
 @theme-headerbar-icon-size-large:                               20px;
 @theme-headerbar-icon-color:                                    @global-highlight-color;
@@ -36,6 +41,20 @@
 @theme-footer-totop-active-color:                               @global-highlight-color;
 
 @theme-fixed-bar-width:                                         60px;
+
+//
+// Additions
+//
+
+// 'tm-address-horizontal' for <address></address>
+@theme-address-horizontal-label-width:                          100px;
+@theme-address-horizontal-data-margin:                          100px;
+@theme-address-horizontal-label-font-size:                      @global-ui-font-size;
+@theme-address-horizontal-label-color:                          @global-highlight-color;
+
+// 'tm-dotnav-follower'
+@theme-dotnav-active-background:                                @dotnav-active-background;
+
 
 /* ========================================================================
    Theme
@@ -59,20 +78,6 @@ body { background: red; }
 
 .tm-hero-padding > * { padding-top: 81px; }
 
-/*
- * Footer
- */
-
-/* Phone landscape and bigger */
-@media (min-width: @breakpoint-medium) {
-
-    .tm-footer {
-        padding-top: 60px;
-        padding-bottom: 60px;
-    }
-
-}
-
 
 /* Blog
  ========================================================================== */
@@ -83,10 +88,11 @@ body { background: red; }
 }
 
 
-
+// Imported from yoo_dolce-vita
+// ========================================================================
 
 //
-// Frame (Warp Option)
+// Frame
 //
 
 // Animation keyframes
@@ -297,13 +303,12 @@ body { background: red; }
     line-height: 1.2;
 }
 
-// Navbar search + more
-.tm-headerbar .tm-search,
-.tm-headerbar .tm-more {
+// Header Social
+.tm-headerbar .tm-header-social {
 
     position: relative;
 
-    // Search button
+    // Button style
     .tm-headerbar-button {
 
         width: @theme-headerbar-button-width;
@@ -333,8 +338,7 @@ body { background: red; }
     }
 
     // Icons
-    .tm-search-button::before { content: @theme-headerbar-icon-search; }
-    .tm-more-button::before { content: @theme-headerbar-icon-more; }
+    .tm-header-social-button::before { content: @theme-headerbar-icon; }
 
     // Dropdown style
     .tm-headerbar-dropdown {
@@ -345,31 +349,24 @@ body { background: red; }
 
 }
 
-// Hiding the default icon
-.tm-headerbar .tm-search .uk-search::before { display: none; }
-
-// Search field width
-.tm-headerbar .tm-search .tm-search-dropdown .uk-search-field,
-.tm-headerbar .tm-search .tm-search-dropdown .uk-search-field:focus { width: @theme-headerbar-dropdown-width; }
-
 //
 // Headerbar Default
-// Theme source: yoo_dolce-vita/layouts/header.default.php
+// Theme source: theme-dolce/views/header-default.php
 //
 
 .tm-headerbar-default { padding: @global-padding 0; }
-.tm-headerbar-default .tm-search .tm-headerbar-button::before,
-.tm-headerbar-default .tm-more .tm-headerbar-button::before { font-size: @theme-headerbar-icon-size-large; }
+.tm-headerbar-default .tm-header-social .tm-headerbar-button::before { font-size: @theme-headerbar-icon-size-large; }
 
 //
 // Headerbar Center
-// Theme source: yoo_dolce-vita/layouts/header.centered.php
+// Theme source: theme-dolce/views/header-centered.php
 //
+
 .tm-headerbar-center { padding: @global-padding @global-padding-large; }
 
 //
 // Headerbar Single Row
-// Theme source: yoo_dolce-vita/layouts/header.single.php
+// Theme source: theme-dolce/views/header-single.php
 //
 
 .tm-headerbar-single { padding: @global-padding-large 0; box-sizing: border-box; }
@@ -390,7 +387,7 @@ body { background: red; }
 
 //
 // Headerbar Overlay on Hover/Scroll
-// Theme source: yoo_dolce-vita/layouts/header.overlay.php
+// Theme source: theme-dolce/views/header-overlay.php
 //
 
 .tm-headerbar-overlay {
@@ -505,3 +502,386 @@ body { background: red; }
 }
 
 .tm-navbar-default.tm-navbar-overlay-true .uk-dropdown-navbar  { padding-left: 0; }
+
+
+//
+// Bottom Offset
+//
+
+// Panel modifications
+.tm-bottom-offset > * > .uk-panel { padding: @global-padding-large; }
+
+// Shadow
+.tm-bottom-offset > * > .uk-panel::after { opacity: 1; }
+
+// Large Screens
+@media (min-width: @breakpoint-large) {
+
+    .tm-bottom-offset {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+
+    // Block Paddings
+    .tm-offset .tm-block-offset-parent { padding-bottom: round(@block-large-padding-vertical-large - @global-grid-gutter-large); }
+    .tm-offset .tm-block-footer { padding-top: round(@block-large-padding-vertical-large - @global-grid-gutter-large); }
+
+    // Panel modifications
+    .tm-bottom-offset > * > .uk-panel { padding: @global-padding-xlarge; }
+
+}
+
+// Small to Medium Screens
+@media (max-width: @breakpoint-medium-max) {
+
+    // Container Gutter
+    .tm-bottom-offset > .tm-container { margin-bottom: @global-grid-gutter-large; }
+
+}
+
+// Small to Medium Screens
+@media (min-width: @breakpoint-medium) and (max-width: @breakpoint-medium-max) {
+
+    // Container Padding
+    .tm-bottom-offset > .tm-container { padding: 0 @block-large-padding-vertical-medium; }
+
+    // Container Padding when frame is enabled
+    .tm-page-overlay .tm-page-frame .tm-bottom-offset > .tm-container { padding: 0 round((@block-large-padding-vertical-medium + @theme-frame-size)); }
+
+}
+
+//
+// Footer
+//
+
+.tm-footer + .tm-footer-meta {
+    box-sizing: border-box;
+    margin: @global-margin-large 0 0 0;
+    border-top: @global-border-width solid @global-border;
+}
+
+// Border color
+.uk-contrast .tm-footer + .tm-footer-meta { border-top-color: @global-secondary-border; }
+.uk-contrast-primary .tm-footer + .tm-footer-meta { border-top-color: @global-primary-border; }
+
+.tm-footer-meta {
+    position: relative;
+    min-height: @theme-footer-height;
+}
+
+// Footer left + right
+@media (min-width: @breakpoint-large) {
+
+    .tm-footer + .tm-footer-meta { margin-top: @global-margin-xlarge; }
+
+    .tm-footer-left,
+    .tm-footer-right {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+    }
+
+    .tm-footer-left{ left: 0; }
+    .tm-footer-right { right: 0; }
+
+}
+
+// Footer on small view ports
+@media (max-width: @breakpoint-medium-max) {
+
+    .tm-footer-meta {
+        display: block;
+        padding-top: @global-padding-xlarge;
+    }
+
+    .tm-footer-meta > div:not(:first-child) { margin-top: @global-grid-gutter; }
+
+    .tm-footer-meta > div {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .tm-footer-meta > div > .uk-panel .uk-flex {
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+    }
+
+}
+
+// Footer Totop Scroller
+.tm-footer-meta .tm-totop-scroller {
+
+    display: inline-block;
+    width: @theme-footer-totop-size;
+    height: @theme-footer-totop-size;
+    line-height: @theme-footer-totop-size;
+    text-align: center;
+    text-decoration: none;
+
+    // Icon
+    &::before {
+        content: "\e096";
+        color: @theme-footer-totop-color;
+        font-family: @global-theme-icon-font-family;
+        font-size: 18px;
+        -webkit-transition: @global-transition;
+        transition: @global-transition;
+    }
+
+    // Hover
+    &:hover::before { color: @theme-footer-totop-hover-color; }
+
+    // Click
+    &:focus::before,
+    &:active::before {
+        color: @theme-footer-totop-active-color;
+        -webkit-filter: @button-active-filter;
+        filter: @button-active-filter;
+    }
+
+}
+
+// uk-contrast
+.uk-contrast .tm-footer-meta .tm-totop-scroller::before { color: @global-secondary-muted-color; }
+.uk-contrast .tm-footer-meta .tm-totop-scroller:hover::before { color: @global-secondary-highlight-color; }
+.uk-contrast .tm-footer-meta .tm-totop-scroller:focus::before,
+.uk-contrast .tm-footer-meta .tm-totop-scroller:active::before { color: @global-secondary-highlight-color; }
+
+// uk-contrast-primary
+.uk-contrast-primary .tm-footer-meta .tm-totop-scroller::before { color: @global-primary-muted-color; }
+.uk-contrast-primary .tm-footer-meta .tm-totop-scroller:hover::before { color: @global-primary-highlight-color; }
+.uk-contrast-primary .tm-footer-meta .tm-totop-scroller:focus::before,
+.uk-contrast-primary .tm-footer-meta .tm-totop-scroller:active::before { color: @global-primary-highlight-color; }
+
+//
+// Fixed-Bar
+//
+
+// Large screens
+@media (min-width: @breakpoint-medium) {
+
+    .tm-fixed-bar {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: @theme-fixed-bar-width;
+        z-index: 7;
+    }
+
+    .tm-framed .tm-fixed-bar {
+        top: @theme-frame-size-large;
+        right: @theme-frame-size-large;
+        bottom: @theme-frame-size-large;
+    }
+
+}
+
+// Extra Large screens
+@media (min-width: @breakpoint-xlarge) {
+
+    .tm-framed .tm-fixed-bar {
+        top: @theme-frame-size-xlarge;
+        right: @theme-frame-size-xlarge;
+        bottom: @theme-frame-size-xlarge;
+    }
+
+}
+
+
+// Theme Additions
+// ==========================================================================
+
+//
+// Hide / Show page title for WordPress (Warp Option)
+//
+
+.tm-page-title-false .tm-content > .uk-article > .uk-article-title { display: none; }
+
+//
+// Font modifiers
+//
+
+.tm-font {
+    font-family: @global-font-family;
+    font-weight: @global-font-weight;
+    text-transform: @global-text-transform;
+    letter-spacing: @global-letter-spacing;
+}
+
+.tm-font-alt-1 {
+    font-family: @global-alt-1-font-family;
+    font-weight: @global-alt-1-font-weight;
+    text-transform: @global-alt-1-text-transform;
+    letter-spacing: @global-alt-1-letter-spacing;
+}
+
+.tm-font-alt-2 {
+    font-family: @global-alt-2-font-family;
+    font-weight: @global-alt-2-font-weight;
+    text-transform: @global-alt-2-text-transform;
+    letter-spacing: @global-alt-2-letter-spacing;
+}
+
+//
+// Modifier 'tm-contain-background-' for uk-block images
+//
+
+[class*='tm-contain-background-'] {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.tm-contain-background-top-center { background-position: 50% 0; }
+.tm-contain-background-top-left { background-position: 0 0; }
+.tm-contain-background-top-right { background-position: 100% 0; }
+.tm-contain-background-center { background-position: 50% 50%; }
+.tm-contain-background-left { background-position: 0 50%; }
+.tm-contain-background-right { background-position: 100% 50%; }
+.tm-contain-background-bottom-center { background-position: 50% 100%; }
+.tm-contain-background-bottom-left { background-position: 0 100%; }
+.tm-contain-background-bottom-right { background-position: 100% 100%; }
+
+// Hide background images on small viewports
+@media (max-width: @breakpoint-small-max) {
+
+    .tm-background-hidden-small { background-image: none !important; }
+
+}
+
+// Hide background images on small to medium viewports
+@media (max-width: @breakpoint-medium-max) {
+
+    .tm-background-hidden-medium { background-image: none !important; }
+
+}
+
+//
+// Modifier 'tm-content-boxed'
+//
+
+.tm-content-boxed {
+    margin: @global-margin;
+    padding: @global-padding;
+    background: @global-background;
+    box-shadow: 0 3px 8px fade(@global-shadow, 10%);
+    color: @global-color !important;
+}
+
+@media (min-width: @breakpoint-large) {
+
+    .tm-content-boxed {
+        margin: @global-margin-large;
+        padding: @global-padding-large;
+    }
+
+}
+
+@media (min-width: @breakpoint-xlarge) {
+
+    .tm-content-boxed {
+        margin: @global-margin-xlarge;
+        padding: @global-padding-xlarge;
+    }
+
+}
+
+// Overlay content boxed shadows
+.uk-contrast-primary .tm-content-boxed { box-shadow: 0 3px 8px fade(@global-primary-shadow, 20%); }
+.uk-contrast .tm-content-boxed { box-shadow: 0 3px 8px fade(@global-secondary-shadow, 20%); }
+
+//
+// Horizontal address
+//
+
+.tm-address-horizontal .tm-label {
+    font-size: @theme-address-horizontal-label-font-size;
+    color: @theme-address-horizontal-label-color;
+}
+
+// Large screens
+@media (min-width: @breakpoint-xlarge) {
+
+    .tm-address-horizontal .tm-label {
+        width: @theme-address-horizontal-label-width;
+        float: left;
+        clear: both;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .tm-address-horizontal .tm-data { margin-left: @theme-address-horizontal-data-margin; }
+
+}
+
+// uk-contrast color
+.uk-contrast .tm-address-horizontal .tm-label { color: @global-secondary-highlight-color; }
+
+// uk-contrast-primary color
+.uk-contrast-primary .tm-address-horizontal .tm-label { color: @global-primary-highlight-color; }
+
+//
+// Dotnav Follower
+//
+
+// 'tm-dotnav' follower 'tm-dotnav-follower'
+.tm-dotnav-follower {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: @dotnav-width;
+    height: @dotnav-height;
+    margin: round((@dotnav-width / 2)) 0 0 round((@dotnav-width / 2));
+    padding: 0;
+    border-radius: round((@dotnav-width / 2));
+    background: @theme-dotnav-active-background;
+    transition: top .2s, height .2s;
+    z-index: -1;
+}
+
+// removing the active background from items
+.tm-dotnav > .uk-active > * { background: rgba(0,0,0,0); }
+
+//
+// Gallery modifier 'tm-card-gallery'
+//
+
+// Extend with .uk-grid-xlarge
+.tm-card-gallery.uk-grid { &:extend(.uk-grid-xlarge all); }
+
+// Adding a box-shadow
+.tm-card-gallery .uk-panel { box-shadow: 0 17px 25px -8px fade(@global-shadow, 90%); }
+.uk-contrast-primary .tm-card-gallery .uk-panel { box-shadow: 0 17px 25px -8px fade(@global-primary-shadow, 90%); }
+.uk-contrast .tm-card-gallery .uk-panel { box-shadow: 0 17px 25px -8px fade(@global-secondary-shadow, 90%); }
+
+//
+// Grid modifier 'tm-margin-condensed'
+// Reducing the margins of title and content of a widget item
+//
+
+.tm-margin-condensed {
+
+    h3 { margin-bottom: 0; }
+    h3 + .uk-margin { margin-top: 5px; }
+
+}
+
+//
+// Margin modifier 'tm-margin-xlarge'
+// Reducing the margins of title and content of a widget item
+//
+
+.tm-margin-xlarge { margin-bottom: @global-margin-xlarge; }
+* + .tm-margin-xlarge { margin-top: @global-margin-xlarge; }
+
+.tm-margin-xlarge-top { margin-top: @global-margin-xlarge !important; }
+.tm-margin-xlarge-bottom { margin-bottom: @global-margin-xlarge !important; }
+.tm-margin-xlarge-left { margin-left: @global-margin-xlarge !important; }
+.tm-margin-xlarge-right { margin-right: @global-margin-xlarge !important; }

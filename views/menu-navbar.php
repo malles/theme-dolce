@@ -9,11 +9,8 @@
         $dropdown = ($root->getDepth() === 0 && $node->hasChildren());
 
         if ($dropdown) {
-
             $settings = [];
-
             $settings['pos'] = $params['header_layout'] !== 'default' ? "bottom-center" : '';
-
             $dropdown = 'data-uk-dropdown=\''.json_encode($settings).'\'';
         }
 

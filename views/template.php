@@ -8,14 +8,26 @@
         <?php $view->style('theme', 'theme:css/theme.css') ?>
         <?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky',  'uikit-lightbox',  'uikit-parallax']) ?>
     </head>
-    <body class="tm-framed tm-page-overlay">
+
+    <?php
+
+        $body_classes = array();
+        if ($params['frame'] == 'overlay') $body_classes[] = 'tm-framed tm-page-overlay';
+        if ($params['frame'] == 'padding') $body_classes[] = 'tm-framed tm-page-padding';
+        if ($params['frame_block']) $body_classes[] = 'tm-block-frame';
+
+        $body_classes = count($body_classes) ? sprintf('class="%s"', trim(implode(' ', $body_classes))) : '';
+
+    ?>
+
+    <body <?= $body_classes; ?>>
 
         <?php if ($params['frame']) : ?>
         <div class="tm-frame-top"></div>
         <div class="tm-frame-bottom"></div>
         <div class="tm-frame-right"></div>
         <div class="tm-frame-left"></div>
-        <?php endif; ?>
+        <?php endif ?>
 
         <?= $params['frame'] ? '<div class="tm-page-frame">' : '' ?>
 
@@ -33,7 +45,7 @@
 
                 </div>
             </div>
-            <?php endif; ?>
+            <?php endif ?>
 
             <?php if ($view->position()->exists('top')) : ?>
             <div id="tm-top" class="tm-top uk-block <?= $params['top_style'] ?>">
@@ -45,7 +57,7 @@
 
                 </div>
             </div>
-            <?php endif; ?>
+            <?php endif ?>
 
             <?php if ($view->position()->exists('top_b')) : ?>
             <div id="tm-top-b" class="tm-top-b uk-block <?= $params['top_b_style'] ?>">
@@ -57,7 +69,7 @@
 
                 </div>
             </div>
-            <?php endif; ?>
+            <?php endif ?>
 
             <?php if ($view->position()->exists('top_c')) : ?>
             <div id="tm-top-c" class="tm-top-c uk-block <?= $params['top_c_style'] ?>">
@@ -69,7 +81,7 @@
 
                 </div>
             </div>
-            <?php endif; ?>
+            <?php endif ?>
 
             <div id="tm-main" class="tm-main uk-block <?= $params['main_style'] ?>">
                 <div class="uk-container uk-container-center">
@@ -101,7 +113,7 @@
 
                 </div>
             </div>
-            <?php endif; ?>
+            <?php endif ?>
 
             <?php if ($view->position()->exists('bottom_b')) : ?>
             <div id="tm-bottom-b" class="tm-bottom-b uk-block <?= $params['bottom_b_style'] ?>">
@@ -113,7 +125,7 @@
 
                 </div>
             </div>
-            <?php endif; ?>
+            <?php endif ?>
 
             <?php if ($view->position()->exists('bottom_c')) : ?>
             <div id="tm-bottom-c" class="tm-bottom-c uk-block <?= $params['bottom_c_style'] ?>">
@@ -125,19 +137,57 @@
 
                 </div>
             </div>
-            <?php endif; ?>
+            <?php endif ?>
 
-            <?php if ($view->position()->exists('footer')) : ?>
-            <div id="tm-footer" class="tm-footer uk-block <?= $params['footer_style'] ?>">
+            <?php if ($view->position()->exists('bottom_offset') || $view->position()->exists('footer') || $view->position()->exists('footer_left')  || $view->position()->exists('footer_right') || $params['totop_scroller']) : ?>
+            <div id="tm-footer" class="tm-block-footer uk-block <?= $params['footer_style'] ?>">
+
+                <?php if ($view->position()->exists('bottom_offset')) : ?>
+                <section class="tm-bottom-offset">
+                    <div class="uk-container uk-container-center tm-container">
+                        <?= $view->position('bottom_offset', 'position-panel.php') ?>
+                    </div>
+                </section>
+                <?php endif ?>
+
+                <?php if ($view->position()->exists('footer') || $view->position()->exists('footer_left')  || $view->position()->exists('footer_right') || $params['totop_scroller']) : ?>
                 <div class="uk-container uk-container-center">
 
+                    <?php if ($view->position()->exists('footer')) : ?>
                     <section class="uk-grid uk-grid-match" data-uk-grid-margin>
                         <?= $view->position('footer', 'position-grid.php') ?>
                     </section>
+                    <?php endif ?>
+
+                    <?php if ($view->position()->exists('footer_left')  || $view->position()->exists('footer_right') || $params['totop_scroller']) : ?>
+                    <footer id="tm-footer" class="tm-footer-meta uk-flex uk-flex-middle uk-width-1-1">
+
+                        <?php if ($view->position()->exists('footer_left')) : ?>
+                        <div class="tm-footer-left uk-flex uk-flex-middle">
+                            <?= $view->position('footer_right', 'position-panel.php') ?>
+                        </div>
+                        <?php endif ?>
+
+                        <?php if ($params['totop_scroller']) : ?>
+                        <div class="tm-footer-center uk-flex uk-flex-middle uk-flex-center uk-width-1-1">
+                            <a id="tm-anchor-bottom" class="tm-totop-scroller" data-uk-smooth-scroll href="#"></a>
+                        </div>
+                        <?php endif ?>
+
+                        <?php if ($view->position()->exists('footer_right')) : ?>
+                        <div class="tm-footer-right uk-flex uk-flex-middle">
+                            <?= $view->position('footer_right', 'position-panel.php') ?>
+                        </div>
+                        <?php endif ?>
+
+                    </footer>
+                    <?php endif ?>
 
                 </div>
+                <?php endif ?>
+
             </div>
-            <?php endif; ?>
+            <?php endif ?>
 
             <?php if ($view->position()->exists('offcanvas') || $view->menu()->exists('offcanvas')) : ?>
             <div id="offcanvas" class="uk-offcanvas">
@@ -160,6 +210,12 @@
                     <?php endif ?>
 
                 </div>
+            </div>
+            <?php endif ?>
+
+            <?php if ($view->position()->exists('fixed_bar')) : ?>
+            <div class="tm-fixed-bar uk-hidden-small">
+                <?= $view->position('fixed_bar', 'position-blank.php') ?>
             </div>
             <?php endif ?>
 

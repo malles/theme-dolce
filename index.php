@@ -32,11 +32,12 @@ return [
         'bottom_b' => 'Bottom B',
         'bottom_c' => 'Bottom C',
         'bottom_d' => 'Bottom C',
+        'bottom_offset' => 'Bottom Offset',
         'footer' => 'Footer Main',
         'footer_left' => 'Footer Left',
         'footer_right' => 'Footer Right',
         'offcanvas' => 'Offcanvas',
-        'fixedbar' => 'Fixed Bar'
+        'fixed_bar' => 'Fixed Bar'
 
     ],
 
@@ -59,6 +60,7 @@ return [
         'dropdown_overlay' => true,
         'frame' => 'overlay',
         'frame_block' => false,
+        'totop_scroller' => true,
         'top_style' => 'uk-block-muted',
         'top_b_style' => 'uk-block-default',
         'top_c_style' => 'uk-block-muted',

@@ -17,9 +17,9 @@
             <div class="tm-headerbar-right uk-flex uk-flex-middle">
 
                 <?php if ($view->position()->exists('header_social')) : ?>
-                <div class="tm-more uk-hidden-small">
+                <div class="tm-header-social uk-hidden-small">
                    <div data-uk-dropdown="{mode:'click', pos:'left-center'}">
-                       <button class="tm-headerbar-button tm-more-button"></button>
+                       <button class="tm-headerbar-button tm-header-social-button"></button>
                        <div class="uk-dropdown-blank tm-headerbar-dropdown">
                            <?= $view->position('header_social', 'position-blank.php') ?>
                        </div>
