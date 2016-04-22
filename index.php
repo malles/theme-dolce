@@ -50,6 +50,7 @@ return [
         'title_hide' => false,
         'title_large' => false,
         'alignment' => '',
+        'style' => '',
         'html_class' => '',
         'sidebar_first' => false,
         'hero_image' => '',

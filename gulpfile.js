@@ -10,10 +10,11 @@ var gulp       = require('gulp'),
     header     = require('gulp-header'),
     less       = require('gulp-less'),
     rename     = require('gulp-rename'),
+    concat     = require('gulp-concat'),
+    merge      = require('merge-stream'),
     path       = require('path'),
     fs         = require('fs'),
-    glob       = require('glob'),
-    concat     = require('gulp-concat')
+    glob       = require('glob');
 
 // banner for the css files
 var banner = "/*! <%= data.title %> <%= data.version %> | (c) 2014 Pagekit | MIT License */\n";
@@ -42,7 +43,12 @@ gulp.task('compile', function () {
  */
 gulp.task('compile-styles', function() {
 
-    var files = glob.sync('less/styles/*/style.less');
+    var files = glob.sync('less/styles/*/style.less'),
+        streams = [];
+
+    if (!fs.existsSync('css/styles')) {
+        fs.mkdir('css/styles');
+    }
 
     files.forEach(function(file) {
 
@@ -52,12 +58,14 @@ gulp.task('compile-styles', function() {
             fs.mkdirSync(dest);
         }
 
-        return gulp.src(['less/theme.less', file])
+        streams.push( gulp.src(['less/theme.less', file])
             .pipe(concat('theme.less'))
             .pipe(less({compress: true}))
             .pipe(header(banner, { data: require('./package.json') }))
-            .pipe(gulp.dest(dest));
+            .pipe(gulp.dest(dest)) );
     });
+
+    return merge(streams);
 
 });
 
@@ -65,5 +73,5 @@ gulp.task('compile-styles', function() {
  * Watch for changes in files
  */
 gulp.task('watch', function (cb) {
-    gulp.watch('**/*.less', ['compile']);
+    gulp.watch('**/*.less', ['compile', 'compile-styles']);
 });
