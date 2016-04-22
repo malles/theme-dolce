@@ -76,16 +76,6 @@ html { overflow-y: scroll; }
 
 .tm-hero-padding > * { padding-top: 81px; }
 
-
-/* Blog
- ========================================================================== */
-
-.tm-container-small {
-    max-width: 800px;
-    margin: auto;
-}
-
-
 .uk-block { &:extend(.uk-block-large all); }
 
 // Imported from yoo_dolce-vita
@@ -900,3 +890,41 @@ html { overflow-y: scroll; }
 .tm-margin-xlarge-bottom { margin-bottom: @global-margin-xlarge !important; }
 .tm-margin-xlarge-left { margin-left: @global-margin-xlarge !important; }
 .tm-margin-xlarge-right { margin-right: @global-margin-xlarge !important; }
+
+
+// Blog Extension
+// ==========================================================================
+
+// Spacing to each other
+.tm-article-blog + .tm-article-blog {
+    margin-top: @global-margin-large;
+    padding-top: @global-margin-large;
+}
+
+// Blog style on medium to large view ports
+@media (min-width: @breakpoint-medium) {
+
+    // Spacing to each other
+    .tm-article-blog + .tm-article-blog {
+        margin-top: @global-margin-xlarge;
+        padding-top: @global-margin-xlarge;
+    }
+
+}
+
+// Read more
+.tm-article-button-link {
+    margin-right: @global-margin-small;
+    padding: 0;
+}
+
+// Icon for comment link
+.tm-button-comment { padding-left: 10px; }
+.tm-button-comment::before {
+    content: '\e076';
+    margin-right: 5px;
+    font-family: @global-theme-icon-font-family;
+}
+
+// Adding a different margin to 'uk-pagination'
+.uk-article + .uk-pagination { margin-top: @global-margin-xlarge; }
