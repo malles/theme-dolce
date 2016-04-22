@@ -28,7 +28,7 @@
         <div class="uk-form-row">
             <span class="uk-form-label">{{ 'Style' | trans }}</span>
             <div class="uk-form-controls">
-                <select id="form-navbar-layout" class="uk-form-width-large" v-model="node.theme.style">
+                <select id="form-styles" class="uk-form-width-large" v-model="node.theme.style">
                     <option value="">{{ 'Default' | trans }}</option>
                     <option value="classico">{{ 'Classico' | trans }}</option>
                     <option value="facile">{{ 'Facile' | trans }}</option>

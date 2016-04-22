@@ -33,9 +33,10 @@
             </div>
 
             <div>
-                <div class="uk-panel tm-article-image" style="background: url(../../<?= $image ?>) #FFF 50% 50% no-repeat; background-size: cover;">
+                <div class="uk-panel tm-article-image" style="background: url('<?= $view->url($image) ?>') #FFF 50% 50% no-repeat; background-size: cover;">
                     <a class="uk-position-cover" href="<?= $view->url('@blog/id', ['id' => $post->id]) ?>">
                         <img class="uk-invisible" src="<?= $image ?>" alt="<?= $post->get('image.alt') ?>">
+
                     </a>
                 </div>
             </div>
