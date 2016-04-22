@@ -60,7 +60,7 @@ gulp.task('compile-styles', function() {
 
         streams.push( gulp.src(['less/theme.less', file])
             .pipe(concat('theme.less'))
-            .pipe(less({compress: true}))
+            .pipe(less({paths: 'less', compress: true}))
             .pipe(header(banner, { data: require('./package.json') }))
             .pipe(gulp.dest(dest)) );
     });
