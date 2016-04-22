@@ -128,6 +128,18 @@
             </div>
             <?php endif ?>
 
+            <?php if ($view->position()->exists('bottom_d')) : ?>
+            <div id="tm-bottom-d" class="tm-bottom-d uk-block <?= $params['bottom_d_style'] ?>">
+                <div class="uk-container uk-container-center">
+
+                    <section class="uk-grid uk-grid-match" data-uk-grid-margin>
+                        <?= $view->position('bottom_d', 'position-grid.php') ?>
+                    </section>
+
+                </div>
+            </div>
+            <?php endif ?>
+
             <?php if ($view->position()->exists('bottom_offset') || $view->position()->exists('footer') || $view->position()->exists('footer_left')  || $view->position()->exists('footer_right') || $params['totop_scroller']) : ?>
             <div id="tm-footer" class="tm-block-footer uk-block <?= $params['footer_style'] ?>">
 

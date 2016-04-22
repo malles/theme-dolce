@@ -45,12 +45,27 @@
                 <p class="uk-form-controls-condensed">
                     <label><input type="checkbox" v-model="node.theme.hero_viewport"> {{ 'Full viewport height' | trans }}</label>
                 </p>
-                <p class="uk-form-controls-condensed">
-                    <label><input type="checkbox" v-model="node.theme.hero_contrast"> {{ 'Invert colors' | trans }}</label>
-                </p>
                 <p class="uk-form-controls-condensed uk-margin-bottom">
                     <label><input type="checkbox" v-model="node.theme.hero_parallax"> {{ 'Enable parallax effect' | trans }}</label>
                 </p>
+                <p class="uk-form-controls-condensed">
+                    <select id="form-hero-style" class="uk-form-width-large" v-model="node.theme.hero_style">
+                        <option value="uk-block-default">{{ 'Default' | trans }}</option>
+                        <option value="uk-block-muted">{{ 'Muted' | trans }}</option>
+                        <option value="uk-block-primary uk-contrast-primary">{{ 'Primary' | trans }}</option>
+                        <option value="uk-block-secondary uk-contrast">{{ 'Secondary' | trans }}</option>
+                    </select>
+                </p>
+                <p class="uk-form-help-block">{{ 'Select the background color.' | trans }}</p>
+                <p class="uk-form-controls-condensed">
+                    <select id="form-hero-blend" class="uk-form-width-large" v-model="node.theme.hero_blend">
+                        <option value="">{{ 'None' | trans }}</option>
+                        <option value="muliply">{{ 'Multiply' | trans }}</option>
+                        <option value="soft-light">{{ 'Soft Light' | trans }}</option>
+                        <option value="hard-light">{{ 'Hard Light' | trans }}</option>
+                    </select>
+                </p>
+                <p class="uk-form-help-block">{{ 'Select a background blend mode.' | trans }}</p>
                 <p class="uk-form-controls-condensed uk-form-width-large"><input-image :source.sync="node.theme.hero_image"></input-image></p>
                 <p class="uk-form-help-block">{{ 'Select a background image for the hero position.' | trans }}</p>
             </div>

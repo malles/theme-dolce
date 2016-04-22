@@ -32,7 +32,7 @@ return [
         'bottom' => 'Bottom A',
         'bottom_b' => 'Bottom B',
         'bottom_c' => 'Bottom C',
-        'bottom_d' => 'Bottom C',
+        'bottom_d' => 'Bottom D',
         'bottom_offset' => 'Bottom Offset',
         'footer' => 'Footer Main',
         'footer_left' => 'Footer Left',
@@ -53,8 +53,9 @@ return [
         'html_class' => '',
         'sidebar_first' => false,
         'hero_image' => '',
+        'hero_style' => 'uk-block-default',
+        'hero_blend' => '',
         'hero_viewport' => '',
-        'hero_contrast' => '',
         'hero_parallax' => '',
         'header_layout' => 'overlay',
         'header_sticky' => false,
@@ -69,8 +70,8 @@ return [
         'main_style' => 'uk-block-default',
         'bottom_style' => 'uk-block-muted',
         'bottom_b_style' => 'uk-block-default',
-        'bottom_c_style' => 'uk-block-primary uk-contrast-primary',
-        'bottom_d_style' => 'uk-block-secondary uk-contrast',
+        'bottom_c_style' => 'uk-block-secondary uk-contrast',
+        'bottom_d_style' => 'uk-block-primary uk-contrast-primary',
         'footer_style' => 'uk-block-secondary uk-contrast'
 
     ],
@@ -146,8 +147,12 @@ return [
                 $classes['parallax'] = 'data-uk-parallax="{bg: \'-400\'}"';
             }
 
-            if ($params['hero_contrast'] && $params['hero_image']) {
-                $classes['hero'] .= ' uk-contrast';
+            if ($params['hero_style'] && $params['hero_image']) {
+                $classes['hero'] .= ' '.$params['hero_style'];
+            }
+
+            if ($params['hero_blend'] && $params['hero_image']) {
+                $classes['hero'] .= ' tm-background-blend-'.$params['hero_blend'];
             }
 
             // body classes
