@@ -50,7 +50,6 @@ return [
         'title_hide' => false,
         'title_large' => false,
         'alignment' => '',
-        'style' => '',
         'html_class' => '',
         'sidebar_first' => false,
         'hero_image' => '',
@@ -100,7 +99,7 @@ return [
      */
     'config' => [
 
-        'logo_contrast' => '',
+        'style' => '',
         'logo_offcanvas' => ''
 
     ],

@@ -26,20 +26,6 @@
         </template>
 
         <div class="uk-form-row">
-            <span class="uk-form-label">{{ 'Style' | trans }}</span>
-            <div class="uk-form-controls">
-                <select id="form-styles" class="uk-form-width-large" v-model="node.theme.style">
-                    <option value="">{{ 'Default' | trans }}</option>
-                    <option value="classico">{{ 'Classico' | trans }}</option>
-                    <option value="facile">{{ 'Facile' | trans }}</option>
-                    <option value="oro">{{ 'Oro' | trans }}</option>
-                    <option value="signor">{{ 'Signor' | trans }}</option>
-                    <option value="signora">{{ 'Signora' | trans }}</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="uk-form-row">
             <label for="form-class" class="uk-form-label">{{ 'HTML Class' | trans }}</label>
             <div class="uk-form-controls">
                 <input id="form-class" class="uk-form-width-large" type="text" v-model="node.theme.html_class">
