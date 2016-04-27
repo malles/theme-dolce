@@ -891,7 +891,6 @@ html { overflow-y: scroll; }
 .tm-margin-xlarge-left { margin-left: @global-margin-xlarge !important; }
 .tm-margin-xlarge-right { margin-right: @global-margin-xlarge !important; }
 
-
 // Blog Extension
 // ==========================================================================
 
@@ -928,3 +927,79 @@ html { overflow-y: scroll; }
 
 // Adding a different margin to 'uk-pagination'
 .uk-article + .uk-pagination { margin-top: @global-margin-xlarge; }
+
+
+// Style modifications
+// ==========================================================================
+
+
+.body-style ();
+
+// Oro Style
+.body-style () when (@global-style = 'default') {
+
+    // Heading style for 'tm-hero-title'
+    .tm-hero-title > h3 {
+        color: @global-contrast-color;
+        text-shadow: 0 3px 8px fade(@global-primary-shadow, 40%);
+    }
+
+}
+
+// Oro Style
+.body-style () when (@global-style = 'oro') {
+
+    // uk-contrast extension for tm-dotnav-follower
+    .tm-dotnav { &:extend(.uk-dotnav-contrast all); }
+
+    // Heading style for 'tm-hero-title'
+    .tm-hero-title > h3 {
+        color: @global-secondary-background;
+        text-shadow: 0 0 10px fade(@global-secondary-shadow, 10%);
+    }
+
+}
+
+// Signor Style
+.body-style () when (@global-style = 'signor') {
+
+    // Heading style for 'tm-hero-title'
+    .tm-hero-title > h3 { text-shadow: 0 3px 8px fade(@global-secondary-shadow, 80%); }
+
+}
+
+// Classico Style
+.body-style () when (@global-style = 'classico') {
+
+    // uk-contrast extension for tm-dotnav-follower
+    .tm-dotnav { &:extend(.uk-dotnav-contrast all); }
+
+    // Heading style for 'tm-hero-title'
+    .tm-hero-title > h3 {
+        padding: @global-padding-large;
+        border: 1px solid @global-secondary-highlight-color;
+        text-shadow: none;
+    }
+
+}
+
+// Facile Style
+.body-style () when (@global-style = 'facile') {
+
+    // Heading style for 'tm-hero-title'
+    .tm-hero-title > h3 { text-shadow: none; }
+
+}
+
+// Signora Style
+.body-style () when (@global-style = 'signora') {
+
+    // Heading style for 'tm-hero-title'
+    .tm-hero-title > h3 {
+        padding: @global-padding-large;
+        border: 10px solid @global-primary-border;
+        text-shadow: 0 3px 8px fade(@global-primary-shadow, 40%);
+        box-shadow: inset 3px 3px 12px fade(@global-primary-shadow, 30%), 3px 3px 12px fade(@global-primary-shadow, 30%);
+    }
+
+}
