@@ -1,3 +1,3 @@
 # Dolce Theme
 
-A very clean and simple theme great for blogging.
+A modern theme great for portfolios and products.
