@@ -30,7 +30,7 @@
 
     <?php if ($view->position()->exists('offcanvas') || $view->menu()->exists('offcanvas')) : ?>
     <div class="uk-flex uk-flex-center uk-flex-middle uk-visible-small">
-        <a href="#offcanvas" class="uk-navbar-toggle" data-uk-offcanvas></a>
+        <a href="#offcanvas" class="uk-navbar-toggle tm-logo-small uk-text-center uk-navbar-brand" data-uk-offcanvas></a>
     </div>
     <?php endif ?>
 

@@ -2,7 +2,7 @@
 
     <?php if ($params['logo'] || $params['title']) : ?>
     <div class="tm-headerbar-left uk-flex uk-flex-middle">
-        <a class="tm-logo uk-navbar-brand uk-hidden-small uk-flex uk-flex-middle" href="<?= $view->url()->get() ?>">
+        <a class="tm-logo uk-navbar-brand uk-flex uk-flex-middle" href="<?= $view->url()->get() ?>">
             <?php if ($params['logo']) : ?>
                 <img class="tm-logo uk-responsive-height" src="<?= $this->escape($params['logo']) ?>" alt="">
                 <img class="tm-logo-contrast uk-responsive-height" src="<?= ($params['logo_contrast']) ? $this->escape($params['logo_contrast']) : $this->escape($params['logo']) ?>" alt="">
@@ -35,7 +35,7 @@
         <?php endif ?>
 
         <?php if ($view->position()->exists('offcanvas') || $view->menu()->exists('offcanvas')) : ?>
-        <div class="uk-flex uk-flex-center uk-flex-middle uk-visible-small">
+        <div class="uk-flex uk-flex-center uk-flex-middle uk-hidden-large">
             <a href="#offcanvas" class="uk-navbar-toggle" data-uk-offcanvas></a>
         </div>
         <?php endif ?>
