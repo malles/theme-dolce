@@ -13,9 +13,15 @@
                     <?= __('Written by %name% on %date%', ['%name%' => $post->user->name, '%date%' => '<time datetime="'.$post->date->format(\DateTime::W3C).'" v-cloak>{{ "'.$post->date->format(\DateTime::W3C).'" | date "longDate" }}</time>' ]) ?>
                 </p>
 
-                <h1 class="uk-article-title"><a href="<?= $view->url('@blog/id', ['id' => $post->id]) ?>"><?= $post->title ?></a></h1>
+                <h1 class="uk-article-title">
+                    <a href="<?= $view->url('@blog/id', ['id' => $post->id]) ?>">
+                        <?= $post->title ?>
+                    </a>
+                </h1>
 
-                <div class="uk-margin"><?= $post->excerpt ?: $post->content ?></div>
+                <div class="uk-margin">
+                    <?= $post->excerpt ?: $post->content ?>
+                </div>
 
                 <p>
                     <?php if (isset($post->readmore) && $post->readmore || $post->excerpt) : ?>
@@ -43,13 +49,19 @@
 
     <?php else : ?>
 
-    <h1 class="uk-article-title"><a href="<?= $view->url('@blog/id', ['id' => $post->id]) ?>"><?= $post->title ?></a></h1>
+    <h1 class="uk-article-title">
+        <a href="<?= $view->url('@blog/id', ['id' => $post->id]) ?>">
+            <?= $post->title ?>
+        </a>
+    </h1>
 
     <p class="uk-article-meta">
         <?= __('Written by %name% on %date%', ['%name%' => $post->user->name, '%date%' => '<time datetime="'.$post->date->format(\DateTime::W3C).'" v-cloak>{{ "'.$post->date->format(\DateTime::W3C).'" | date "longDate" }}</time>' ]) ?>
     </p>
 
-    <div class="uk-margin"><?= $post->excerpt ?: $post->content ?></div>
+    <div class="uk-margin">
+        <?= $post->excerpt ?: $post->content ?>
+    </div>
 
     <p>
         <?php if (isset($post->readmore) && $post->readmore || $post->excerpt) : ?>
@@ -78,7 +90,6 @@
 <?php if ($total > 1) : ?>
 <ul class="uk-pagination">
 
-
     <?php for($i=1;$i<=$total;$i++): ?>
         <?php if ($i <= ($pageIndex+$range) && $i >= ($pageIndex-$range)): ?>
 
@@ -106,7 +117,6 @@
 
         <?php endif; ?>
     <?php endfor; ?>
-
 
 </ul>
 <?php endif ?>
