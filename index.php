@@ -147,7 +147,7 @@ return [
                 $classes['parallax'] = 'data-uk-parallax="{bg: \'-400\'}"';
             }
 
-            if ($params['hero_style'] && $params['hero_image']) {
+            if ($params['hero_style']) {
                 $classes['hero'] .= ' '.$params['hero_style'];
             }
 
