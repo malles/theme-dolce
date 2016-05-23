@@ -33,6 +33,35 @@
             </div>
         </div>
 
+        <div class="uk-form-row">
+            <label for="form-navbar-layout" class="uk-form-label">{{ 'Navbar' | trans }}</label>
+            <div class="uk-form-controls">
+                <select id="form-navbar-layout" class="uk-form-width-large" v-model="config.header_layout">
+                    <option value="default">{{ 'Left' | trans }}</option>
+                    <option value="centered">{{ 'Centered' | trans }}</option>
+                    <option value="single">{{ 'Single' | trans }}</option>
+                    <option value="overlay">{{ 'Overlay (always sticky)' | trans }}</option>
+                </select>
+                <p class="uk-form-controls-condensed">
+                    <label><input type="checkbox" v-model="config.header_sticky"> {{ 'Sticky Navigation' | trans }}</label>
+                </p>
+            </div>
+        </div>
+
+        <div class="uk-form-row">
+            <span class="uk-form-label">{{ 'Dropdown Overlay' | trans }}</span>
+            <div class="uk-form-controls uk-form-controls-text">
+                <label><input type="checkbox" v-model="config.dropdown_overlay"> {{ 'Extend the dropdown to full width.' | trans }}</label>
+            </div>
+        </div>
+
+        <div class="uk-form-row">
+            <span class="uk-form-label">{{ 'To-top Scroller' | trans }}</span>
+            <div class="uk-form-controls uk-form-controls-text">
+                <label><input type="checkbox" v-model="config.totop_scroller"> {{ 'Enable a to-top scroller.' | trans }}</label>
+            </div>
+        </div>
+
     </div>
 
 </template>

@@ -57,12 +57,8 @@ return [
         'hero_blend' => '',
         'hero_viewport' => '',
         'hero_parallax' => '',
-        'header_layout' => 'overlay',
-        'header_sticky' => false,
-        'dropdown_overlay' => true,
         'frame' => 'overlay',
         'frame_block' => false,
-        'totop_scroller' => true,
         'top_style' => 'uk-block-muted',
         'top_b_style' => 'uk-block-default',
         'top_c_style' => 'uk-block-muted',
@@ -100,7 +96,11 @@ return [
     'config' => [
 
         'style' => '',
-        'logo_offcanvas' => ''
+        'logo_offcanvas' => '',
+        'header_layout' => 'overlay',
+        'header_sticky' => false,
+        'dropdown_overlay' => true,
+        'totop_scroller' => true
 
     ],
 
