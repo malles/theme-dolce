@@ -1,0 +1,53 @@
+
+.tm-toolbar {
+  padding: @global-padding-small @theme-frame-size 0 @theme-frame-size;
+  background: @theme-frame-background;
+  .uk-subnav {
+    margin-bottom: 0;
+  }
+  .uk-subnav > * > * {
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+@media (min-width: @breakpoint-large) {
+  .tm-toolbar {
+    padding: @global-padding-small @theme-frame-size-large 0 @theme-frame-size-large;
+  }
+}
+
+@media (min-width: @breakpoint-xlarge) {
+  .tm-toolbar {
+    padding: @global-padding-small @theme-frame-size-xlarge 0 @theme-frame-size-xlarge;
+  }
+}
+
+@media (min-width: @breakpoint-medium){
+  .tm-page-frame {
+    padding-top: 0;
+  }
+}
+//normalize logos
+.tm-headerbar-single .tm-logo {
+  height: 50px !important;
+  padding: 0;
+}
+
+@media (max-width: @breakpoint-medium-max) {
+  //flex and stack on small devices
+  .uk-flex-small {
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+  .uk-flex-small > * {width: 100%; margin-left: 0; margin-right: 0;}
+
+  //fixed height images
+  .pk-image-max-height-small {
+    max-height: 80px;
+    overflow: hidden;
+  }
+}

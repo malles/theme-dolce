@@ -11,6 +11,7 @@ return [
 
         'main' => 'Main',
         'offcanvas' => 'Offcanvas',
+        'toolbar' => 'Toolbar',
         'footer' => 'Footer'
 
     ],
@@ -20,6 +21,7 @@ return [
      */
     'positions' => [
 
+        'toolbar' => 'Toolbar',
         'navbar' => 'Navbar',
         'header_social' => 'Header Social',
         'header_info' => 'Header Info',
@@ -97,6 +99,7 @@ return [
 
         'style' => '',
         'logo_offcanvas' => '',
+        'logo_right' => '',
         'header_layout' => 'overlay',
         'header_sticky' => false,
         'dropdown_overlay' => true,
