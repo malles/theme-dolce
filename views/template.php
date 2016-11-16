@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <?= $view->render('head') ?>
         <?php $view->style('theme', $params['style'] ? 'theme:css/theme.'.$params['style'].'.css' : 'theme:css/theme.css') ?>
+        <?php $view->script('js-social', 'theme:app/assets/jssocials/dist/jssocials.min.js', 'jquery') ?>
         <?php $view->script('theme', 'theme:js/theme.js', ['uikit-sticky',  'uikit-lightbox',  'uikit-parallax', 'uikit-slider', 'uikit-grid']) ?>
     </head>
 
@@ -220,6 +221,10 @@
 
                     <?php if ($view->menu()->exists('offcanvas')) : ?>
                         <?= $view->menu('offcanvas', ['class' => 'uk-nav-offcanvas']) ?>
+                    <?php endif ?>
+
+                    <?php if ($view->menu()->exists('offcanvas')) : ?>
+                        <?= $view->menu('toolbar', ['class' => 'uk-nav-offcanvas']) ?>
                     <?php endif ?>
 
                     <?php if ($view->position()->exists('offcanvas')) : ?>
