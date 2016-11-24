@@ -90,9 +90,19 @@
 
                     <div class="uk-grid" data-uk-grid-match data-uk-grid-margin>
 
-                        <main class="<?= $view->position()->exists('sidebar') ? 'uk-width-medium-3-4' : 'uk-width-1-1'; ?>">
-                            <?= $view->render('content') ?>
-                        </main>
+                        <div class="<?= $view->position()->exists('sidebar') ? 'uk-width-medium-3-4' : 'uk-width-1-1'; ?>">
+
+                            <?php if ($view->position()->exists('breadcrumbs')) : ?>
+                                <div id="tm-breadcrumbs" class="tm-breadcrumbs">
+                                    <?= $view->position('breadcrumbs', 'position-blank.php') ?>
+                                </div>
+                            <?php endif ?>
+
+                            <main>
+                                <?= $view->render('content') ?>
+                            </main>
+
+                        </div>
 
                         <?php if ($view->position()->exists('sidebar')) : ?>
                         <aside class="uk-width-medium-1-4 <?= $params['sidebar_first'] ? 'uk-flex-order-first-medium' : ''; ?>">

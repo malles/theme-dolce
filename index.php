@@ -30,6 +30,7 @@ return [
         'top_b' => 'Top B',
         'top_c' => 'Top C',
         'top_d' => 'Top D',
+        'breadcrumbs' => 'Breadcrumbs',
         'sidebar' => 'Sidebar',
         'bottom' => 'Bottom A',
         'bottom_b' => 'Bottom B',
