@@ -149,3 +149,52 @@
     .uk-description-list-horizontal > dd { margin-left: @description-list-horizontal-margin-left; }
   }
 }
+
+/* stack forms in grids on desktop */
+.hook-form-misc() {
+
+  /* Desktop and smaller */
+  @media (max-width: @breakpoint-large-max) {
+
+    .uk-grid .uk-form-horizontal .uk-form-label {
+      display: block;
+      margin-bottom: @form-stacked-margin-bottom;
+      font-weight: @form-stacked-font-weight;
+      .hook-form-stacked-label;
+    }
+
+  }
+
+  /* Desktop and bigger */
+  @media (min-width: @breakpoint-large) {
+
+    .uk-grid .uk-form-horizontal .uk-form-label {
+      width: inherit;
+      margin-top: inherit;
+      float: inherit;
+    }
+
+    .uk-grid .uk-form-horizontal .uk-form-controls { margin-left: inherit; }
+
+    /* Better vertical alignment if controls are checkboxes and radio buttons with text */
+    .uk-grid .uk-form-horizontal .uk-form-controls-text { padding-top: inherit; }
+
+  }
+
+  /* XL Desktop and bigger */
+  @media (min-width: @breakpoint-xlarge) {
+
+    .uk-grid .uk-form-horizontal .uk-form-label {
+      width: @form-horizontal-label-width;
+      margin-top: @form-horizontal-label-margin-top;
+      float: left;
+    }
+
+    .uk-grid .uk-form-horizontal .uk-form-controls { margin-left: @form-horizontal-controls-margin-left; }
+
+    /* Better vertical alignment if controls are checkboxes and radio buttons with text */
+    .uk-grid .uk-form-horizontal .uk-form-controls-text { padding-top: @form-horizontal-controls-text-padding-top; }
+
+  }
+
+}
